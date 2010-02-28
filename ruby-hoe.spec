@@ -19,7 +19,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_enable_debug_packages	0
 
 %description
-...
+Hoe is a rake/rubygems helper for project Rakefiles. It helps you
+manage and maintain, and release your project and includes a dynamic
+plug-in system allowing for easy extensibility. Hoe ships with
+plug-ins for all your usual project tasks including rdoc generation,
+testing, packaging, and deployment.
 
 %package rdoc
 Summary:	Documentation files for %{pkgname}

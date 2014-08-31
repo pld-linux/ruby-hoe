@@ -5,12 +5,12 @@
 %define pkgname hoe
 Summary:	Rake/rubygems helper for project Rakefiles
 Name:		ruby-%{pkgname}
-Version:	2.5.0
+Version:	3.12.0
 Release:	1
 License:	MIT/Ruby License
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	7afb2f143fbeff68d0bfa46cd1d51623
+# Source0-md5:	6219af793471ed6785022562b20a7545
 URL:		http://www.zenspider.com/projects/hoe.html
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -56,6 +56,9 @@ ri documentation for %{pkgname}.
 %{__sed} -i -e '1 s,#!.*ruby,#!%{__ruby},' bin/*
 
 %build
+# write .gemspec
+%__gem_helper spec
+
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
 rm -rf ri/{File,Rake,String,Object}
@@ -71,15 +74,20 @@ cp -a bin/* $RPM_BUILD_ROOT%{_bindir}
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{name}-%{version}
 
+# install gemspec
+install -d $RPM_BUILD_ROOT%{ruby_specdir}
+cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc History.txt README.txt Hoe.pdf
+%doc History.rdoc README.rdoc Hoe.pdf
 %attr(755,root,root) %{_bindir}/sow
 %{ruby_vendorlibdir}/%{pkgname}.rb
 %{ruby_vendorlibdir}/%{pkgname}
+%{ruby_specdir}/%{pkgname}-%{version}.gemspec
 
 %files rdoc
 %defattr(644,root,root,755)

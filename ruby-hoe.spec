@@ -5,25 +5,24 @@
 %define pkgname hoe
 Summary:	Rake/rubygems helper for project Rakefiles
 Name:		ruby-%{pkgname}
-Version:	3.12.0
-Release:	2
+Version:	3.17.0
+Release:	1
 License:	MIT/Ruby License
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	6219af793471ed6785022562b20a7545
+# Source0-md5:	32e173e0c6bdc3d27c6ab305416a4603
 URL:		http://www.zenspider.com/projects/hoe.html
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
 BuildRequires:	sed >= 4.0
 %if %{with tests}
 BuildRequires:	ruby-minitest >= 5.0
-BuildRequires:	ruby-minitest < 6
 BuildRequires:	ruby-rdoc >= 4.0
-BuildRequires:	ruby-rdoc < 5
+BuildRequires:	ruby-rdoc < 6
 %endif
 Requires:	ruby-rubygems >= 1.4
 Requires:	ruby-rake >= 0.8
-Requires:	ruby-rake < 11.0
+Requires:	ruby-rake < 13.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

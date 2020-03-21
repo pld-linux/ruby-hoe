@@ -6,7 +6,7 @@
 Summary:	Rake/rubygems helper for project Rakefiles
 Name:		ruby-%{pkgname}
 Version:	3.17.0
-Release:	1
+Release:	2
 License:	MIT/Ruby License
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
